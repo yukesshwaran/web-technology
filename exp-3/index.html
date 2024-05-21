@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EB_BILL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>EB BILL CALCULATOR</h1>
+    <div class="open">
+        <p>For Domestic Usage Only </p><br>
+        <label for="name">Enter Your Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="num">Enter Units Consumed:</label>
+        <input type="number" id="num" name="num"><br><br>
+        <button onclick="calculateBill()">Calculate</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateBill() {
+        
+            var name = document.getElementById("name").value;
+            var units = document.getElementById("num").value;
+            
+            var billAmount = 0;
+            if(units <= 100) {
+                billAmount = units * 4.50;
+            } else if(units <= 200) {
+                billAmount = 450 + (units - 100) * 2.25;
+            } else if(units <= 400) {
+                billAmount = 675 + (units - 200) * 4.50;
+            } else if(units <= 500) {
+                billAmount = 1575 + (units - 400) * 6.00;
+            } else if(units <= 600) {
+                billAmount = 1950 + (units - 500) * 8.00;
+            } else if(units <= 800) {
+                billAmount = 2350 + (units - 600) * 9.00;
+            } else if(units <= 1000) {
+                billAmount = 3350 + (units - 800) * 10.00;
+            } else {
+                billAmount = 4350 + (units - 1000) * 11.00;
+            }
+
+           
+            document.getElementById("result").innerHTML = "Dear " + name + ", your bill amount is: Rs." + billAmount.toFixed(2);
+        }
+    </script>
+</body>
+</html>
