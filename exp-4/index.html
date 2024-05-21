@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form name="forml" method="post" action="/submit">
+        <h1>FORM VALIDATION</h1>
+        <div class="open">
+            <label for="name">Enter Your Name:</label>
+            <input type="text" id="name" name="name">
+            <p id="a1" style="color:red;"></p><br><br>
+            <label for="num">Enter Your Rollno:</label>
+            <input type="text" id="num" name="num">
+            <p id="a2" style="color:red;"></p><br><br>
+            <label id="fav_language">Gender:</label> <br>
+            <input type="radio" id="male" name="fav_language" value="male">Male</input>
+            <input type="radio" id="female" name="fav_language" value="female">Female</input>
+            <input type="radio" id="others" name="fav_language" value="others">Others</input>
+            <p id="a3" style="color:red;"></p><br><br>
+            <label id="language">Program Language:</label>
+            <input type="checkbox" id="c" name="language" value="c">C</input><br>
+            <input type="checkbox" id="c++" name="language" value="c++">C++</input><br>
+            <input type="checkbox" id="java" name="language" value="java">Java</input><br>
+            <input type="checkbox" id="python" name="language" value="python">Python</input>
+            <p id="a4" style="color:red;"></p><br><br>
+            <label for="desc">Area of Interest:</label>
+            <select id="desc">
+                <option>Community service</option>
+                <option>Blogging</option>
+                <option>Graphic design</option>
+                <option>Data visualization</option>
+                <option>Search engine optimization</option>
+            </select>
+            <p id="a5" style="color:red;"></p><br><br>
+            <label for="phone">Enter Your PhoneNo:</label>
+            <input type="tel" id="phone" name="phone">
+            <p id="a6" style="color:red;"></p><br><br>
+            <label for="email">Enter Your Email:</label>
+            <input type="email" id="email" name="email">
+            <p id="a7" style="color:red;"></p><br><br>
+            <label for="pass">Enter Your Password:</label>
+            <input type="password" id="pass" name="pass">
+            <p id="a8" style="color:red;"></p>
+            <input type="checkbox" id="showPassword" onclick="togglePassword()">Show Password<br><br>
+            <button type="button" onclick="formval()">Submit</button>
+        </div>
+    </form>
+
+    <script>
+        function formval() {
+            var s = 0;
+            var name = document.forms["forml"]["name"].value;
+            if (name == "") {
+                document.getElementById("a1").innerHTML = "Please enter your name";
+                s = 1;
+            } else if (!/^[a-zA-Z\s]*$/.test(name)) {
+                document.getElementById("a1").innerHTML = "Name should contain only alphabets";
+                s = 1;
+            }
+
+            var num = document.forms["forml"]["num"].value;
+            if (num == "") {
+                document.getElementById("a2").innerHTML = "Please enter your roll number";
+                s = 1;
+            } else if (!/^\d{2}[a-zA-Z]{3}\d{3}$/.test(num)) {
+                document.getElementById("a2").innerHTML = "Roll number should be in '22ITR001' this format";
+                s = 1;
+            }
+
+            var fav_language = document.querySelector('input[name="fav_language"]:checked');
+            if (!fav_language) {
+                document.getElementById("a3").innerHTML = "Please select your gender";
+                s = 1;
+            }
+
+            var languages = document.querySelectorAll('input[name="language"]:checked');
+            if (languages.length === 0) {
+                document.getElementById("a4").innerHTML = "Please select at least one programming language";
+                s = 1;
+            }
+
+            var desc = document.getElementById("desc").value;
+            if (desc == "") {
+                document.getElementById("a5").innerHTML = "Please select your area of interest";
+                s = 1;
+            }
+
+            var phone = document.forms["forml"]["phone"].value;
+            if (phone == "") {
+                document.getElementById("a6").innerHTML = "Please enter your phone number";
+                s = 1;
+            } else if (!/^\d{10}$/.test(phone)) {
+                document.getElementById("a6").innerHTML = "Phone number should contain exactly 10 digits";
+                s = 1;
+            }
+
+            var email = document.forms["forml"]["email"].value;
+            if (email == "") {
+                document.getElementById("a7").innerHTML = "Please enter your email";
+                s = 1;
+            } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+                document.getElementById("a7").innerHTML = "Email should be in the format: example@gmail.com";
+                s = 1;
+            }
+
+            var pass = document.forms["forml"]["pass"].value;
+            if (pass == "") {
+                document.getElementById("a8").innerHTML = "Please enter your password";
+                s = 1;
+            } else if (!/(?=.*[A-Z])(?=.*\d.*\d)(?=.*[a-z].*[a-z].*[a-z].*[a-z].*[a-z])/.test(pass)) {
+                document.getElementById("a8").innerHTML = "Password should contain at least 1 capital alphabet, 2 digits, and 5 small alphabet";
+                s = 1;
+            }
+
+            if (s == 0) {
+                document.forms["forml"].submit();
+            } 
+        }
+
+        function togglePassword() {
+            var passwordInput = document.getElementById("pass");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>
