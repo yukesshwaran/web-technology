@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form</title>
+    <style>
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            width: 100%;
+        }
+        table {
+            width: 100%;
+        }
+        th, td {
+            padding: 10px;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;..
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>REGISTRATION FORM</h2>
+    <form action="http://localhost:5000/login" method="post">
+        <table>
+            <tr>
+                <th>NAME</th>
+                <td><input type="text" name="username" value="" /></td>
+            </tr>
+            <tr>
+                <th>ROLL NO</th>
+                <td><input type="text" name="id" value=""/></td>
+            </tr>
+            <tr>
+                <th>BRANCH</th>
+                <td>
+                    <select name="branch">
+                        <option value="select">Select Branch</option>
+                        <option value="IT">IT</option>
+                        <option value="CSE">CSE</option>
+                        <option value="AI">AI</option>
+                        <option value="EEE">EEE</option>
+                        <option value="ECE">ECE</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>GENDER</th>
+                <td>
+                    <input type="radio" name="gender" value="female"/> Female<br/>
+                    <input type="radio" name="gender" value="male"/>Male<br/>
+                    <input type="radio" name="gender" value="other"/>Other<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>MOBILE NO</th>
+                <td><input type="number" name="phno" value=""/></td>
+            </tr>
+            <tr>
+                <th>ADDRESS</th>
+                <td><input type="text" name="branchadd" value=""/></td>
+            </tr>
+            <tr>
+                <th colspan="2"><input type="submit" name="login" value="Login"/></th>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
